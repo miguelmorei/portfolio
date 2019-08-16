@@ -1,0 +1,111 @@
+// ----------------------------------------
+// paths
+
+
+// ----------------------------------------
+// classes
+
+
+// ----------------------------------------
+// colors
+
+
+$color-brand: #0000ff;
+
+
+// ----------------------------------------
+// spacing
+
+$spacer:                        10px;
+$spacer-1:                      $spacer;
+$spacer-2:                      ($spacer * 2);
+$spacer-3:                      ($spacer * 3);
+$spacer-4:                      ($spacer * 4);
+$spacer-5:                      ($spacer * 5);
+$spacer-6:                      ($spacer * 6);
+$spacer-7:                      ($spacer * 7);
+$spacer-8:                      ($spacer * 8);
+$spacer-9:                      ($spacer * 9);
+$spacer-10:                     ($spacer * 10);
+$spacer-15:                     ($spacer * 15);
+$spacer-20:                     ($spacer * 20);
+
+// ----------------------------------------
+// typography
+
+// english
+
+$font-times : 'Times', serif;
+// ----------------------------------------
+// container
+
+$container-max-width:           1200px;
+
+
+// common component vars
+
+$component-padding-y:           $spacer-2;
+$component-padding-y-md:        $spacer-6;
+$component-padding-y-lg: $spacer-1 * 12;
+// transitions
+
+$transition-duration:           0.5s;
+$transition-delay-step:         0.2s;
+
+// ----------------------------------------
+// update bootstrap vars
+
+// grid
+$grid-gutter-width:             20px;
+
+// base
+
+$body-bg:                       #ffffff;
+
+// typography
+
+$paragraph-margin-bottom:       $spacer-2;
+
+// links
+
+$link-color:                    $color-brand;
+$link-decoration:               none;
+$link-hover-color:              lighten($color-brand, 5);
+$link-hover-decoration:         none;
+
+// transitions
+
+$transition-base:               all $transition-duration ease;
+
+// grid breakpoints
+
+$grid-breakpoints: (
+  xs: 0,
+  sm: 576px,
+  md: 768px,
+  //lg: 1024px,
+  lg: 970px,
+  xl: 1440px,
+  xxl : 1600px
+) !default;
+
+// spacing
+
+$spacers: ();
+$spacers: map-merge((
+    0: 0,
+    1: $spacer, // 10px
+    2: ($spacer * 2), // 20px
+    3: ($spacer * 3), // 30px
+    4: ($spacer * 4), // 40px
+    5: ($spacer * 5), // 50px
+    6: ($spacer * 6), // 60px
+    7: ($spacer * 7), // 70px
+    8: ($spacer * 8), // 80px
+    9: ($spacer * 9), // 90px
+    10: ($spacer * 10), // 100px
+    15 : ($spacer * 15), // 150px
+    20 : ($spacer * 20) // 200px
+), $spacers);
+
+

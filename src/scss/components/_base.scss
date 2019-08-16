@@ -1,0 +1,33 @@
+
+html, body {
+    height: 100%;
+
+    @include when-inside('.touchevents') {
+        height: auto;
+    }
+}
+
+.container-wrapper {
+    height: 100%;
+    width: 100%;
+    overflow-x: hidden!important;
+    overflow: auto;
+}
+
+
+body {
+    font-size: 16px;
+    
+}
+
+
+
+.container-fluid {
+   
+    width: 100%;
+
+    &_flush {
+        max-width: none;
+        padding: 0;
+    }
+}
