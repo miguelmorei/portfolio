@@ -6,6 +6,8 @@ import CookiePopup from './components/cookie-popup';
 import Flickity from 'flickity';
 import {TweenMax} from 'gsap/TweenMax';
 import { TweenMaxBase } from 'gsap/TweenMaxBase';
+import Background3d from './components/3d-background';
+
 
 const debounce = Utils().debounce;
 
@@ -18,6 +20,9 @@ $(document).ready(() => {
 
 
     const text = wrapCharacters($('h1, h2'));
+
+    const bg = new Background3d($('.bg'));
+
 
     setTimeout(()=>{
 
