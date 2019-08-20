@@ -3,22 +3,110 @@ import Scrollbar from 'smooth-scrollbar'; //If you can find a better smooth scro
 import CustomForm from './components/custom-form';
 import Utils from './utils/utils';
 import CookiePopup from './components/cookie-popup';
+import Flickity from 'flickity';
+import {TweenMax} from 'gsap/TweenMax';
+import { TweenMaxBase } from 'gsap/TweenMaxBase';
 
 const debounce = Utils().debounce;
 
 $(document).ready(() => {
 
-    const cookies = new CookiePopup({
+   /*  const cookies = new CookiePopup({
         cookieBanner: "This site uses cookies to improve your experience. By using the site you accept our <a href=\"/privacy-policy/\">privacy policy</a>.",
         accept: "Accept"
-    });
+    }); */
+
+
+    const text = wrapCharacters($('h1, h2'));
+
+    setTimeout(()=>{
+
+        $('body').removeClass('loading');
+        
+        setTimeout(()=>{
+            introAnimation();
+        }, 1000)
+
+    }, 1000);
 
     smoothScroll();
     loadResponsiveMedia();
-    
+    gallery();
+   
 });
 
 
+
+function wrapCharacters(element) {
+
+    $(element).each(function(){
+
+        const text = $(this)[0].textContent.split('').map(node=>{
+            if(node==" ") {
+                return `<span style="display:inline-block;position:relative;opacity:0;transform:translateY(40px);">&nbsp;</span>`
+            }
+            return `<span style="display:inline-block;position:relative;opacity:0;transform:translateY(40px);">${node}</span>`
+        }).join('');
+        
+        $(this).html(text);
+
+    });
+
+}
+
+
+
+function introAnimation() {
+
+    const stagger = TweenMax.staggerTo($('h1 span'), 0.4, {
+        opacity : 1,
+        y : 0,
+        onComplete : function () {
+            TweenMax.staggerTo($('h2 span'), 0.4, {
+                opacity : 1,
+                y : 0,
+                onComplete : ()=>{
+
+                    $('body').addClass('page-loaded');
+
+                }
+            }, 0.02);
+        }
+    }, 0.02);
+}
+
+function gallery() {
+
+
+    if(!$('.gallery').length) {
+        return false;
+    }
+
+    const $gallery = $('.gallery__container'),
+          $slides = $gallery.find('.gallery__slide');
+
+    const customGallery = new Flickity('.gallery__container', {
+        cellAlign: 'left',
+        contain: true,
+        prevNextButtons : false
+    });
+
+    customGallery.on('dragMove', function (e, pointer, vector) {
+
+        let vectorX = vector.x * 0.05;
+        let threshold = 6;
+        let normalisedX = Math.abs(vectorX) <= threshold ? vectorX : (vectorX > 0 ? threshold : -threshold);
+
+        $slides.css('transform', `skewX(${normalisedX}deg)`);
+
+    });
+
+    customGallery.on('dragEnd', function () {
+        $slides.css('transform', `skewX(0deg)`);
+    });
+
+
+}
 
 function loadResponsiveMedia() {
 

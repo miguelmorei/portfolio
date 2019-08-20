@@ -132,7 +132,7 @@ gulp.task('scripts:watch', function () {
 
 gulp.task('templates', function () {
 	const templateData = {
-			siteTitle: "Front End Project Boilerplate"
+			siteTitle: "Miguel Moreira - Creative Developer"
 		},
 		options = {
 			ignorePartials: true,

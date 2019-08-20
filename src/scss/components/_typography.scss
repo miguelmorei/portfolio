@@ -3,11 +3,21 @@
 
 h1, .h1 {
     //
+  font-family: $font-exo;
+  font-size: calculate-rem(40px);
+
+  span {
+    opacity: 0;
+  }
 
 }
 
 h2, .h2 {
-  //
+  font-family: $font-exo;
+  font-size: calculate-rem(60px);
+  display: block;
+  margin-top: $spacer-2;
+
 }
 
 h3, .h3 {
@@ -22,3 +32,6 @@ hr {
   //
 }
 
+.brand {
+  color: $color-brand;
+}

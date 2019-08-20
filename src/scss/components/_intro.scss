@@ -1,0 +1,31 @@
+.intro {
+    position: relative;
+    z-index: 1;
+    max-width: 800px;
+    @include media-breakpoint-up(md) {
+        padding: 0 $spacer-4;
+    }
+
+
+
+    h1 {
+
+
+        div {
+            position: relative;
+            display: inline-block;
+        }
+    }
+
+
+    p {
+        opacity: 0;
+        visibility: hidden;
+        transition: all 0.8s ease-in-out;
+
+        @include when-inside('.page-loaded') {
+            opacity: 1;
+            visibility: visible;
+        }
+    }
+}
