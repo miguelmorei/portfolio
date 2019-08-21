@@ -10,6 +10,7 @@ import Background3d from './components/3d-background';
 
 
 const debounce = Utils().debounce;
+let bg;
 
 $(document).ready(() => {
 
@@ -21,7 +22,7 @@ $(document).ready(() => {
 
     const text = wrapCharacters($('h1, h2'));
 
-    const bg = new Background3d($('.bg'));
+    bg = new Background3d($('.bg'), 9);
 
 
     setTimeout(()=>{
@@ -82,7 +83,6 @@ function introAnimation() {
 
 function gallery() {
 
-
     if(!$('.gallery').length) {
         return false;
     }
@@ -91,7 +91,7 @@ function gallery() {
           $slides = $gallery.find('.gallery__slide');
 
     const customGallery = new Flickity('.gallery__container', {
-        cellAlign: 'left',
+        cellAlign: "left",
         contain: true,
         prevNextButtons : false
     });
@@ -99,9 +99,10 @@ function gallery() {
     customGallery.on('dragMove', function (e, pointer, vector) {
 
         let vectorX = vector.x * 0.05;
-        let threshold = 6;
+        let threshold = 10;
         let normalisedX = Math.abs(vectorX) <= threshold ? vectorX : (vectorX > 0 ? threshold : -threshold);
 
+        bg.moveX(normalisedX);
         $slides.css('transform', `skewX(${normalisedX}deg)`);
 
     });

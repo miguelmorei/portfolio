@@ -6,6 +6,30 @@
         padding: 0 $spacer-4;
     }
 
+    &__links {
+        padding: 0;
+        margin-top: $spacer-4;
+        opacity: 0;
+        visibility: hidden;
+        transition: all 0.8s ease-in-out;
+
+        @include when-inside('.page-loaded') {
+            opacity: 1;
+            visibility: visible;
+        }
+        li {
+            list-style-type: none;
+            display: inline-block;
+            margin-right: $spacer-1;
+
+
+            &:hover {
+                img {
+                    transform: translateY(-4px);
+                }
+            }
+        }
+    }
 
 
     h1 {
