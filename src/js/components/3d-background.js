@@ -2,8 +2,7 @@ import * as THREE from 'three';
 import '../vendor/OrbitControls';
 import { EffectComposer } from 'three/examples/jsm/postprocessing/EffectComposer';
 import { RenderPass } from 'three/examples/jsm/postprocessing/RenderPass';
-import { AfterimagePass} from 'three/examples/jsm/postprocessing/AfterimagePass';
-import { UnrealBloomPass } from 'three/examples/jsm/postprocessing/UnrealBloomPass';
+
 import $ from 'jquery';
 
 export default class Background3d {
@@ -32,10 +31,13 @@ export default class Background3d {
         this.renderer = new THREE.WebGLRenderer({ antialias: true, alpha: true });
         this.renderer.setPixelRatio(window.devicePixelRatio);
         this.renderer.setSize(window.innerWidth, window.innerHeight);
-        this.renderer.setClearColor(0x000000, 0)
+        this.renderer.setClearColor(0xE8E9F3, 0)
 
-        this.light = new THREE.HemisphereLight('#fff', '#000',2);
+        this.light = new THREE.HemisphereLight('#fff', '#ababab', 1);
+     
+      
         this.scene.add(this.light);
+ 
 
         this.controls = new THREE.OrbitControls(this.camera, this.renderer.domElement);
 
@@ -44,19 +46,11 @@ export default class Background3d {
         this.addElements();
 
 
-        window.addEventListener('resize', this.onWindowResize, false);
+        window.addEventListener('resize', ()=>{ this.onWindowResize() }, false);
 
         this.composer = new EffectComposer(this.renderer);
         this.composer.addPass(new RenderPass(this.scene, this.camera));
-        this.composer.addPass(new AfterimagePass());
-
-        
-        let bloomPass = new UnrealBloomPass( new THREE.Vector2( window.innerWidth, window.innerHeight ), 1.5, 0.4, 0.85 );
-        bloomPass.threshold = 0;
-        bloomPass.strength = .2;
-        bloomPass.radius = 0;
-
-        this.composer.addPass(bloomPass);
+  
 
         this.animate();
 
@@ -105,14 +99,18 @@ export default class Background3d {
             fragmentShader: document.getElementById('fragmentShader').textContent
         }); 
 
-        let mesh1 = new THREE.Mesh(cube, shaderMaterial);
+        let basicMaterial = new THREE.MeshLambertMaterial({
+            color : '#2570fa'
+        });
+
+        let mesh1 = new THREE.Mesh(cube, basicMaterial);
        
         let thresholdX = window.innerWidth * .1,
             thresholdY = window.innerHeight * .1;
 
         let posX = (Math.random() * 1 >= .5 ? Math.random() * thresholdX : -(Math.random() * thresholdX)),
             posY = (Math.random() * 1 >= .5 ? Math.random() * thresholdY : -(Math.random() * thresholdY)),
-            posZ = -((Math.random() * 200) + 50);
+            posZ = -((Math.random() * 400) + 50);
 
         mesh1.position.x = posX;
         mesh1.position.z = posZ;

@@ -5,12 +5,10 @@ const PORT = 3000;
 
 module.exports = {
     entry : {
-        app: path.join(__dirname, 'src/js/app.js')
+        app: path.join(__dirname, '../src/js/app.js')
     },
     output : {
-        path : path.resolve(__dirname, 'public/'),
-        filename : 'js/[name].js',
-        publicPath : path.resolve(__dirname, '/public/')
+        filename : '[name].js',
     },
     module : {
         rules : [

@@ -1,11 +1,16 @@
 .gallery {
-    margin: $spacer-8 0;
+    margin: $spacer-2 0 $spacer-8 0;
     width: 100%;
 
     opacity: 0;
     transform: translateY(30px);
     transition: all 0.4s ease-in-out;
 
+    padding: 0 $spacer-2;
+
+    @include media-breakpoint-up(md) {
+        padding: 0 $spacer-4;
+    }
 
     @include when-inside('.page-loaded') {
         opacity: 1;
@@ -15,7 +20,11 @@
     p {
         @extend .h2;
         font-size: 1rem;
-        margin: 0 0 $spacer-4 $spacer-4;
+        margin: 0 0 $spacer-4 0;
+
+        @include media-breakpoint-up(md) {
+            margin: 0 0 $spacer-4 0;
+        }
     }
 
     &__container {
@@ -28,6 +37,8 @@
         height: 200px;
         margin: 0 $spacer-2;
         background: #333;
+        box-shadow: 0px 6px 10px rgba(0,0,0, .1);
+        overflow: hidden;
         
     }
 
@@ -45,7 +56,7 @@
             content: "";
             display:block;
             position:absolute;
-            background : $color-second;
+            background : $color-brand;
             height: 100%;
             width: 100%;
             top: 0;
@@ -102,11 +113,16 @@
     }
 
 
+    .flickity-viewport {
+        overflow: visible;
+    }
+
+
     .flickity-page-dots {
         bottom: auto;
         top: -34px;
         text-align: left;
-        padding-left: 40px;
+
 
 
         .dot {
@@ -116,7 +132,7 @@
             background: $color-second;
 
             &.is-selected {
-                background: $color-brand;
+                background: #fff;
             }
         }
     }

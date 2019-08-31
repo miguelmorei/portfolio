@@ -115,7 +115,8 @@ gulp.task('scripts', function () {
 
     let outputScripts = gulp.src(['src/js/app.js'])
                             .pipe(concat('app.js'))
-                            .pipe(webpackStream(webpackDev))
+                            .pipe(webpackStream(webpackProd))
+                            .pipe(uglify())
                             .pipe(gulp.dest("public/js/"))
     return outputScripts;
 });

@@ -2,6 +2,9 @@
     position: relative;
     z-index: 1;
     max-width: 800px;
+
+    padding: 0 $spacer-2;
+
     @include media-breakpoint-up(md) {
         padding: 0 $spacer-4;
     }

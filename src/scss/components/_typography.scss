@@ -4,19 +4,36 @@
 h1, .h1 {
     //
   font-family: $font-exo;
-  font-size: calculate-rem(40px);
+  font-size: calculate-rem(20px);
 
   span {
     opacity: 0;
+  }
+
+
+  @include media-breakpoint-up(md) {
+    font-size: calculate-rem(30px);
+  }
+
+  @include media-breakpoint-up(lg) {
+    font-size: calculate-rem(40px);
   }
 
 }
 
 h2, .h2 {
   font-family: $font-exo;
-  font-size: calculate-rem(60px);
+  font-size: calculate-rem(30px);
   display: block;
-  margin-top: $spacer-2;
+  line-height: 1;
+
+  @include media-breakpoint-up(md) {
+    font-size: calculate-rem(45px);
+  }
+
+  @include media-breakpoint-up(lg) {
+    font-size: calculate-rem(60px);
+  }
 
 }
 
@@ -32,6 +49,13 @@ hr {
   //
 }
 
-.brand {
+.highlight {
   color: $color-brand;
+
+  font-weight: bold;
+}
+
+a {
+  font-weight: bold;
+  color: $color-second;
 }
